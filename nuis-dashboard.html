@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NUIS CLARK Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f7f9fc;
+      color: #2e3c8d;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background-color: #2e3c8d;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 30px;
+      border-bottom: 4px solid #f9b233;
+      box-shadow: 0 2px 8px rgb(46 60 141 / 0.25);
+      user-select: none;
+    }
+
+    .topbar .left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .topbar .left img {
+      height: 32px;
+      filter: drop-shadow(0 0 2px #f9b233);
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .topbar .left img:hover {
+      transform: rotate(8deg) scale(1.1);
+    }
+
+    .topbar .right {
+      font-size: 15px;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 28px 48px;
+      max-width: 860px;
+      margin: 36px auto 48px auto;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 18px 38px rgb(46 60 141 / 0.12);
+      position: relative;
+    }
+
+    .greeting {
+      color: #006699;
+      font-size: 18px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      user-select: text;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 28px;
+      background-color: #2e3c8d;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #f9b233;
+      color: #2e3c8d;
+      box-shadow: 0 0 12px #f9b233aa;
+    }
+
+    .controls-wrapper {
+      position: relative;
+      width: 800px;
+      height: 44px;
+      margin-bottom: 16px;
+    }
+
+    .home-icon-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #2e3c8d;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+
+    .home-icon-wrapper:hover {
+      color: #f9b233;
+      text-shadow: 0 0 6px #f9b233;
+    }
+
+    .home-icon-wrapper .icon {
+      animation: bounce 1.8s infinite ease-in-out;
+      display: inline-block;
+      transform-origin: center;
+      transition: transform 0.3s ease;
+    }
+
+    .home-icon-wrapper:hover .icon {
+      transform: translateY(-5px);
+      filter: drop-shadow(0 0 5px #f9b233);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .search-box {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 20px;
+      color: #666;
+      user-select: none;
+    }
+
+    .search-box input {
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1.5px solid #ccc;
+      font-size: 15px;
+      width: 180px;
+      font-weight: 600;
+      font-family: 'Open Sans', sans-serif;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      outline-offset: 3px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+
+    .search-box input:focus {
+      border-color: #f9b233;
+      box-shadow: 0 0 14px #f9b233aa;
+      color: #2e3c8d;
+    }
+
+    hr.separator {
+      width: 800px;
+      border: none;
+      border-top: 1.5px solid #ddd;
+      margin-bottom: 28px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      width: 800px;
+      flex-wrap: nowrap;
+    }
+
+    .card {
+      background-color: white;
+      padding: 22px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgb(46 60 141 / 0.07);
+      width: 250px;
+      position: relative;
+      transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      user-select: none;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      box-shadow: 0 14px 36px rgb(46 60 141 / 0.3);
+      transform: translateY(-6px);
+      border-color: #f9b233;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #2e3c8d;
+      user-select: text;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #444;
+      flex-grow: 1;
+      user-select: text;
+      line-height: 1.4;
+    }
+
+    .card.documents {
+      border-top: 4px solid #1abc9c;
+    }
+
+    .card.documents:hover,
+    .card.documents:focus-visible {
+      border-top-color: #16a085;
+      box-shadow: 0 14px 36px rgba(26, 188, 156, 0.4);
+    }
+
+    .card.student-services {
+      border-top: 4px solid #e67e22;
+    }
+
+    .card.student-services:hover,
+    .card.student-services:focus-visible {
+      border-top-color: #d35400;
+      box-shadow: 0 14px 36px rgba(230, 126, 34, 0.4);
+    }
+
+    .card.students {
+      border-top: 4px solid #3498db;
+    }
+
+    .card.students:hover,
+    .card.students:focus-visible {
+      border-top-color: #2980b9;
+      box-shadow: 0 14px 36px rgba(52, 152, 219, 0.4);
+    }
+
+    footer {
+      font-size: 13px;
+      color: #666;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1.5px solid #ddd;
+      margin-top: auto;
+      width: 100%;
+      user-select: none;
+      background-color: #f7f9fc;
+    }
+
+    footer a {
+      color: #2e3c8d;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #f9b233;
+      text-shadow: 0 0 6px #f9b233;
+    }
+
+    @media (max-width: 900px) {
+      .main-content, .cards, hr.separator, .controls-wrapper {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      .cards {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+      .card {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar" role="banner">
+    <div class="left">
+      <img src="NU_shield.svg.png" alt="NU Logo" />
+      <strong>NUIS CLARK</strong>
+    </div>
+    <div class="right" aria-label="User greeting">
+      🔔 Hi, Nicko
+    </div>
+  </div>
+
+  <div class="main-content" role="main">
+    <p class="greeting">Good afternoon, welcome to your control center!</p>
+
+    <a href="index.html" class="back-button" role="button">← Back to NU WebApp</a>
+
+    <div class="controls-wrapper">
+      <div class="home-icon-wrapper" tabindex="0" role="button" aria-label="Go home">
+        <div class="icon" aria-hidden="true">🏠</div>
+        <div class="label">Home</div>
+      </div>
+
+      <div class="search-box" role="search">
+        🔍 <input type="text" placeholder="Search.." aria-label="Search" />
+      </div>
+    </div>
+
+    <hr class="separator" />
+
+    <div class="cards">
+      <a href="documents.html" class="card documents" tabindex="0">
+        <h3>📁 Documents & Manuals</h3>
+        <p>Collection of documents, forms and manuals for administration, students, faculty, and staff.</p>
+      </a>
+
+      <a href="student-services.html" class="card student-services" tabindex="0">
+        <h3>🎓 Student Services</h3>
+        <p>Group of modules for student development, activities, and services.</p>
+      </a>
+
+      <a href="students.html" class="card students" tabindex="0">
+        <h3>🧑‍🎓 Students</h3>
+        <p>Stores and tracks all student information, including grades, accountabilities, and more.</p>
+      </a>
+    </div>
+  </div>
+
+  <footer role="contentinfo">
+    <div>NUIS CLARK &copy; 2025</div>
+    <div><a href="#" target="_blank" rel="noopener">National University Clark</a></div>
+  </footer>
+
+</body>
+</html>

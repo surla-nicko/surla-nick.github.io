@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Students - NUIS CLARK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      background-color: #2e3c8d;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      border-bottom: 4px solid #f9b233;
+    }
+
+    .topbar .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topbar .left a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      gap: 10px;
+    }
+
+    .topbar .left img {
+      height: 30px;
+    }
+
+    .topbar .right {
+      font-size: 14px;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 30px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .content-wrapper {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .breadcrumb {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .separator {
+      width: 100%;
+      border: none;
+      border-top: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #ffffff, #e6ebff);
+      border-radius: 10px;
+      padding: 25px 22px;
+      box-shadow: 5px 5px 12px #bec6ff, -5px -5px 12px #ffffff;
+      transition: box-shadow 0.4s ease, transform 0.3s ease, color 0.4s ease;
+      text-decoration: none;
+      color: #2e3c8d;
+      display: flex;
+      flex-direction: column;
+      height: 140px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .card:hover {
+      background: linear-gradient(145deg, #fff3cc, #ffe38d);
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      box-shadow:
+        0 0 5px #f9b233,
+        0 0 10px #f25c54,
+        0 0 15px #9b59b6;
+      transform: translateY(-6px);
+      font-weight: 700;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #444;
+      flex-grow: 1;
+    }
+
+    .back-button-container {
+      margin: 30px 0 0;
+      align-self: flex-start;
+    }
+
+    .back-button {
+      background-color: #2e3c8d;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #1d2c6c;
+    }
+
+    footer {
+      font-size: 12px;
+      color: #666;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #ccc;
+    }
+
+    footer a {
+      color: #2e3c8d;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="left">
+      <a href="nuis-dashboard.html">
+        <img src="NU_shield.svg.png" alt="NU Logo" />
+        <strong>NUIS CLARK</strong>
+      </a>
+    </div>
+    <div class="right">🔔 Hi, Nicko</div>
+  </div>
+
+  <div class="main-content">
+    <div class="content-wrapper">
+      <!-- Breadcrumb and hr -->
+      <div class="breadcrumb">🏠 <strong>Home</strong> &gt; Students</div>
+      <hr class="separator" />
+
+      <!-- Cards Grid -->
+      <div class="cards-container">
+        <a class="card" href="#"><h3>👤 My Profile</h3><p>View your personal information, education, and family background.</p></a>
+        <a class="card" href="#"><h3>📝 Online Class Registration</h3><p>Reservation and pre-registration to classes you wish to enroll on enrollment start.</p></a>
+        <a class="card" href="#"><h3>💳 Online Enrollment</h3><p>Includes processes from online registration of classes to payment method.</p></a>
+        <a class="card" href="#"><h3>✅ Evaluate my Teacher</h3><p>Evaluate your teacher for each of your enrolled classes for the active period.</p></a>
+        <a class="card" href="#"><h3>📋 List of Class Offerings</h3><p>Displays list of offered classes of each department and program for the current term.</p></a>
+        <a class="card" href="#"><h3>📈 My Flowchart</h3><p>View your curriculum flowchart displaying the details and status of each included subject.</p></a>
+        <a class="card" href="#"><h3>🔐 My Clearance Information</h3><p>View and settle your accountabilities and clearance issues in each department.</p></a>
+        <a class="card" href="#"><h3>📅 My Schedule Viewer</h3><p>View schedules and assigned faculty of your currently enrolled/registered classes.</p></a>
+        <a class="card" href="#"><h3>📄 My Student Ledger</h3><p>View my payment transactions with Accounting’s office.</p></a>
+        <a class="card" href="#"><h3>📑 View Certificate of Registration (COR)</h3><p>Generate and issue certificate of enrollment.</p></a>
+        <a class="card" href="#"><h3>📊 View Grades</h3><p>Displays academic grades of the student for the current grading period.</p></a>
+      </div>
+
+      <!-- Back button -->
+      <div class="back-button-container">
+        <a href="nuis-dashboard.html" class="back-button">← Back</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div><a href="#">National University</a> © 2025</div>
+    <div><a href="#">Privacy Policy</a></div>
+  </footer>
+</body>
+</html>
